@@ -1,0 +1,29 @@
+html
+  head
+    title Download Progress Demo
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    style(type="text/css").
+      .js-progress {
+        width: 100%;
+      }
+    script(src="/socket.io/socket.io.js")
+  body
+    h1 Download Progress Demo
+    div
+      div.js-progress(style="height: 1em; background-color: green;")
+    a#demo(href="200mb.dat") Download
+    script.
+      var socket = io();
+      var progress = document.querySelector('.js-progress');
+      progress.style.width = '0%';
+      socket.on('connect', function() {
+        console.log('connected');
+      });
+      
+      socket.on('download-progress', function(data) {
+        progress.style.width = data.progress.percentage * 100 + '%';
+      });
+      
+      var a = document.querySelector('#demo');
+      console.log(demo)
+    
