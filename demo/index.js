@@ -1,5 +1,6 @@
 // Setup basic express server
 var express = require('express');
+var cookieParser = require('cookie-parser');
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -7,13 +8,9 @@ var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
 var downloadProgress = require('..');
 
-io.on('connection', function(socket){
-  console.log('connection');
-  socket.on('event', function(data){});
-  socket.on('disconnect', function(){});
-});
-
 app.set('view engine', 'jade');
+
+app.use(cookieParser());
 
 app.use(downloadProgress('public', {
   io: io

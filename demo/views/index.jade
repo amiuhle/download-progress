@@ -3,27 +3,34 @@ html
     title Download Progress Demo
     meta(name="viewport", content="width=device-width, initial-scale=1")
     style(type="text/css").
+      .wrapper {
+        border: 1px solid black;
+        margin: 1em;
+      }
       .js-progress {
-        width: 100%;
+        width: 0%;
+        height: 2em;
+        background-color: green;
       }
     script(src="/socket.io/socket.io.js")
   body
     h1 Download Progress Demo
-    div
-      div.js-progress(style="height: 1em; background-color: green;")
-    a#demo(href="200mb.dat") Download
+    div.wrapper
+      div.js-progress
+    a.js-huge-ass-link(href="200mb.dat") Huge Ass File
     script.
-      var socket = io();
       var progress = document.querySelector('.js-progress');
       progress.style.width = '0%';
+      
+      var link = document.querySelector('.js-huge-ass-link');
+      
+      var socket = io('/download-progress');
+      
       socket.on('connect', function() {
-        console.log('connected');
+        var id = socket.id;
+        
       });
       
       socket.on('download-progress', function(data) {
         progress.style.width = data.progress.percentage * 100 + '%';
       });
-      
-      var a = document.querySelector('#demo');
-      console.log(demo)
-    
