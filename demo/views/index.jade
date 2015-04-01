@@ -15,11 +15,37 @@ html
         height: 2em;
         background-color: green;
       }
+      
+      .progress {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        background-color: green;
+        border-radius: 50%;
+        clip: rect(20px, 20px, 20)
+      }
+      
+      .progress__inner {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        margin: 20px;
+        background-color: rgb(214, 252, 214);
+        border-radius: 50%;
+        
+        text-align: center;
+        vertical-align: middle;
+        line-height: 60px;
+      }
     script(src="/socket.io/socket.io.js")
   body
     h1 Download Progress Demo
     div.wrapper
       div.js-progress
+    
+    div.progress
+      div.progress__inner 50%
+    
     a.js-huge-ass-link(href="200mb.dat") Huge Ass File
     script.
       (function() {
