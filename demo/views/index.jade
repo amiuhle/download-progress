@@ -1,0 +1,43 @@
+html
+  head
+    title Download Progress Demo
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    style(type="text/css").
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 1em;
+      }
+      .wrapper {
+        border: 1px solid black;
+        margin: 1em;
+      }
+      .js-progress {
+        width: 0%;
+        height: 2em;
+        background-color: green;
+      }
+    script(src="/socket.io/socket.io.js")
+  body
+    h1 Download Progress Demo
+    div.wrapper
+      div.js-progress
+    a.js-huge-ass-link(href="/200mb.dat") Huge Ass File
+    script.
+      (function() {
+        var progress = document.querySelector('.js-progress');
+        progress.style.width = '0%';
+        
+        var link = document.querySelector('.js-huge-ass-link');
+        
+        var socket = io(location.host + '/download-progress');
+        
+        socket.on('connect', function() {
+          var id = socket.id;    
+        });
+        
+        socket.on('download-progress', function(path, data) {
+          progress.style.width = data.percentage * 100 + '%';
+        });
+      })();
