@@ -20,7 +20,7 @@ html
     h1 Download Progress Demo
     div.wrapper
       div.js-progress
-    a.js-huge-ass-link(href="200mb.dat") Huge Ass File
+    a.js-huge-ass-link(href="/200mb.dat") Huge Ass File
     script.
       (function() {
         var progress = document.querySelector('.js-progress');
@@ -31,11 +31,10 @@ html
         var socket = io(location.host + '/download-progress');
         
         socket.on('connect', function() {
-          var id = socket.id;
-          
+          var id = socket.id;    
         });
         
-        socket.on('download-progress', function(data) {
-          progress.style.width = data.progress.percentage * 100 + '%';
+        socket.on('download-progress', function(path, data) {
+          progress.style.width = data.percentage * 100 + '%';
         });
       })();
