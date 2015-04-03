@@ -1,6 +1,6 @@
 {
   "name": "io-download-progress",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Show progress of file downloads in the browser",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "mocha": "^2.2.1"
   },
   "dependencies": {
+    "cookie": "^0.1.2",
     "debug": "^2.1.3",
     "minimatch": "^2.0.4",
     "socket.io": "^1.3.5"
