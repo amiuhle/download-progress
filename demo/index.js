@@ -10,7 +10,7 @@ var downloadProgress = require('..');
 
 app.set('view engine', 'jade');
 
-app.use(cookieParser());
+// app.use(cookieParser());
 
 // Make sure to attach `downloadProgress` before `serveStatic`
 app.use(downloadProgress('/*.dat', io));
