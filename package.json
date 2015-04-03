@@ -1,6 +1,6 @@
 {
   "name": "io-download-progress",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Show progress of file downloads in the browser",
   "main": "index.js",
   "scripts": {
