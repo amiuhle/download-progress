@@ -13,7 +13,7 @@ app.set('view engine', 'jade');
 app.use(cookieParser());
 
 // Make sure to attach `downloadProgress` before `serveStatic`
-app.use(downloadProgress('public', {
+app.use(downloadProgress('/*.dat', {
   io: io
 }));
 app.use(express.static('public'));
